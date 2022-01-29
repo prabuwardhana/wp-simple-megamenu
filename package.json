@@ -1,0 +1,20 @@
+{
+  "name": "wp-simple-megamenu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prabuwardhana/wp-simple-megamenu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prabuwardhana/wp-simple-megamenu/issues"
+  },
+  "homepage": "https://github.com/prabuwardhana/wp-simple-megamenu#readme"
+}
