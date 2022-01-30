@@ -45,7 +45,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({}),
     new MiniCssExtractPlugin({
-      filename: "./css/[name].css",
+      filename: "./css/megamenu.min.css",
     }),
   ],
   watchOptions: {
