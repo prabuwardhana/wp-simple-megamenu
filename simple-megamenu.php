@@ -10,3 +10,8 @@
  * License:     GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  **/
+
+defined('ABSPATH') || exit;
+
+define('SMM_PATH', plugin_dir_path(__FILE__));
+define('SMM_URL', plugin_dir_url(__FILE__));
