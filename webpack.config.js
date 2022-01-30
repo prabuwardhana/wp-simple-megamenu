@@ -38,4 +38,7 @@ module.exports = {
       filename: "./css/[name].css",
     }),
   ],
+  watchOptions: {
+    ignored: /node_modules/,
+  },
 };
