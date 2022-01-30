@@ -1,4 +1,5 @@
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -6,6 +7,13 @@ module.exports = {
   output: {
     filename: "./js/megamenu.min.js",
     path: path.resolve(__dirname, "dist"),
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }),
+    ],
   },
   module: {
     rules: [
