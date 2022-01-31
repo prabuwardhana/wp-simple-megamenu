@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Plugin initialization class
+ *
+ * @since    0.1.0
+ * @package  simple-megamenu
+ */
+
 class Simple_Megamenu_Init
 {
     public function __construct()
@@ -7,6 +15,11 @@ class Simple_Megamenu_Init
         add_filter('wp_nav_menu_args', array($this, 'modify_nav_menu_args'));
     }
 
+    /**
+     * Enqueue plugin's scripts and styles.
+     *
+     * @since  0.1.0
+     */
     public function enqueue_plugin_scripts()
     {
         wp_enqueue_style('simple-megamenu-style', SMM_URL . 'dist/css/megamenu.min.css', []);
@@ -15,6 +28,12 @@ class Simple_Megamenu_Init
         wp_enqueue_script('simple-megamenu-script');
     }
 
+    /**
+     * This method is hooked into wp_nav_menu_args filter hook.
+     * It lets us modify the arguments passed to wp_nav_menu before they are processed.
+     *
+     * @link https://developer.wordpress.org/reference/hooks/wp_nav_menu_args/
+     */
     public function modify_nav_menu_args($args)
     {
         $options = get_option('simple_megamenu_plugin_options');

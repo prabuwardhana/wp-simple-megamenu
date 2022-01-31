@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Menu fields class
+ *
+ * @since    0.1.0
+ * @package  simple-megamenu
+ */
+
 class Menu_Fields
 {
     public function __construct()
@@ -7,17 +14,30 @@ class Menu_Fields
         add_action('wp_nav_menu_item_custom_fields', array($this, 'menu_item_custom_fields'), 10, 4);
         add_action('wp_update_nav_menu_item', array($this, 'update_nav_menu_item'), 10, 3);
         add_filter('manage_nav-menus_columns', array($this, 'manage_nav_menu_columns'), 99);
+
+        // We don't need custom nav_menu_walker_edit for Wordpress 5.4 and above
         if (!$this->is_wp_gte('5.4')) {
             add_filter('wp_edit_nav_menu_walker', array($this, 'nav_menu_walker_edit'), 99);
         }
     }
 
+    /**
+     * Check Wordpress version
+     *
+     * @since  0.1.0
+     */
     protected function is_wp_gte($version = '5.4')
     {
         global $wp_version;
         return version_compare(strtolower($wp_version), strtolower($version), '>=');
     }
 
+    /**
+     * List custom fields
+     *
+     * @since  0.1.0
+     * @return array list of custom fields
+     */
     protected function fieldsList()
     {
         //note that menu-item- gets prepended to field names
@@ -30,7 +50,11 @@ class Menu_Fields
         ];
     }
 
-    // Setup fields
+    /**
+     * Setup custom fields
+     *
+     * @since  0.1.0
+     */
     public function menu_item_custom_fields($id, $item, $depth, $args)
     {
         $fields = $this->fieldsList();
@@ -56,7 +80,11 @@ class Menu_Fields
         endforeach;
     }
 
-    // Create Columns
+    /**
+     * Create Columns
+     *
+     * @since  0.1.0
+     */
     public function manage_nav_menu_columns($columns)
     {
         $fields = $this->fieldsList();
@@ -66,7 +94,11 @@ class Menu_Fields
         return $columns;
     }
 
-    // Save fields
+    /**
+     * Save our custom fields
+     *
+     * @since  0.1.0
+     */
     public function update_nav_menu_item($menu_id, $menu_item_db_id, $menu_item_args)
     {
         if (defined('DOING_AJAX') && DOING_AJAX) {

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Admin settings class
+ *
+ * @since    0.1.0
+ * @package  simple-megamenu
+ */
+
 class Admin_Settings
 {
     public function __construct()
@@ -8,11 +15,22 @@ class Admin_Settings
         add_action('admin_init', array($this, 'simple_megamenu_register_settings'));
     }
 
+    /**
+     * Add admin settings page.
+     * This can be found under the settings page in the Wordpress dashboard.
+     *
+     * @since  0.1.0
+     */
     public function simple_megamenu_add_settings_page()
     {
         add_options_page('Simple Megamenu Page', 'Simple Megamenu', 'manage_options', 'simple-megamenu', array($this, 'simple_megamenu_render_plugin_settings_page'));
     }
 
+    /**
+     * Settings page render callback.
+     *
+     * @since  0.1.0
+     */
     public function simple_megamenu_render_plugin_settings_page()
     {
 ?>
@@ -25,6 +43,11 @@ class Admin_Settings
 <?php
     }
 
+    /**
+     * Register admin settings page.
+     *
+     * @since  0.1.0
+     */
     public function simple_megamenu_register_settings()
     {
         register_setting('simple_megamenu_plugin_options', 'simple_megamenu_plugin_options');
@@ -33,12 +56,21 @@ class Admin_Settings
         add_settings_field('simple_megamenu_plugin_setting_nav_location', 'Select Menu Location', array($this, 'simple_megamenu_plugin_setting_nav_location'), 'simple_megamenu_plugin', 'nav_location_settings');
     }
 
-
+    /**
+     * Settings section render callback.
+     *
+     * @since  0.1.0
+     */
     public function simple_megamenu_plugin_section_text()
     {
         echo '<p>Here you can set which navigation menu will have the megamenu option </p>';
     }
 
+    /**
+     * Settings field render callback.
+     *
+     * @since  0.1.0
+     */
     public function simple_megamenu_plugin_setting_nav_location()
     {
         $options = get_option('simple_megamenu_plugin_options');
