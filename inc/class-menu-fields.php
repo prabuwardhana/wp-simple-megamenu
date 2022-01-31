@@ -36,6 +36,10 @@ class Menu_Fields
         $fields = $this->fieldsList();
 
         foreach ($fields as $_key => $label) :
+            // Display 'Activate Megamenu' option only if the current menu item has the depth of 0
+            // TODO: update option dynamically when user move the menu item
+            if ($depth > 0 && $_key == 'mm-megamenu') continue;
+
             $key   = sprintf('menu-item-%s', $_key);
             $id    = sprintf('edit-%s-%s', $key, $item->ID);
             $name  = sprintf('%s[%s]', $key, $item->ID);
@@ -43,7 +47,10 @@ class Menu_Fields
             $class = sprintf('field-%s', $_key);
 ?>
             <p class="description description-wide <?php echo esc_attr($class) ?>">
-                <label for="<?php echo esc_attr($id); ?>"><input type="checkbox" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" value="1" <?php echo ($value == 1) ? 'checked="checked"' : ''; ?> /><?php echo esc_attr($label); ?></label>
+                <label for="<?php echo esc_attr($id); ?>">
+                    <input type="checkbox" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" value="1" <?php echo ($value == 1) ? 'checked="checked"' : ''; ?> />
+                    <?php echo esc_attr($label); ?>
+                </label>
             </p>
 <?php
         endforeach;
