@@ -6,12 +6,18 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const sourceMapEnabled = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/js/megamenu.js"),
+  entry: {
+    megamenu: path.resolve(__dirname, "src/js/megamenu.js"),
+    "megamenu-admin": path.resolve(__dirname, "src/js/megamenu-admin.js"),
+  },
   output: {
-    filename: "./js/megamenu.min.js",
+    filename: "./js/[name].min.js",
     path: path.resolve(__dirname, "dist"),
   },
   optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
     minimizer: [
       new TerserPlugin({
         extractComments: false,
