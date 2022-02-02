@@ -12,6 +12,7 @@ class Simple_Megamenu_Init
     public function __construct()
     {
         add_action('wp_enqueue_scripts', array($this, 'enqueue_plugin_scripts'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_navmenu_scripts'));
         add_filter('wp_nav_menu_args', array($this, 'modify_nav_menu_args'));
     }
 
@@ -26,6 +27,19 @@ class Simple_Megamenu_Init
         wp_register_script('simple-megamenu-script', SMM_URL . 'dist/js/megamenu.min.js', ['jquery'], false, true);
 
         wp_enqueue_script('simple-megamenu-script');
+    }
+
+    /**
+     * Enqueue plugin's scripts forn nav-menu.php
+     *
+     * @since  0.1.0
+     */
+    public function enqueue_navmenu_scripts($hook)
+    {
+        if ('nav-menus.php' != $hook) {
+            return;
+        }
+        wp_enqueue_script('simple-megamenu-admin-script', SMM_URL . 'dist/js/megamenu-admin.min.js', [], false, true);
     }
 
     /**
