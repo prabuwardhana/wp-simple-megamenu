@@ -1,6 +1,7 @@
-const adminMenuItem = document.querySelectorAll(".menu-item-depth-0");
-adminMenuItem.forEach(function (item) {
-  const cbItem = item.querySelector(".field-mm-megamenu input");
+const cbItems = document.querySelectorAll(".field-mm-megamenu input");
+
+cbItems.forEach(function (item) {
+  const liElement = item.closest("li");
   const options = {
     attributes: true,
   };
@@ -11,16 +12,15 @@ adminMenuItem.forEach(function (item) {
         mutation.type === "attributes" &&
         mutation.attributeName === "class"
       ) {
-        console.log("something has change");
-        if (item.classList.contains("menu-item-depth-0")) {
-          cbItem.disabled = false;
+        if (liElement.classList.contains("menu-item-depth-0")) {
+          item.disabled = false;
         } else {
-          cbItem.disabled = true;
+          item.disabled = true;
         }
       }
     });
   }
 
   const observer = new MutationObserver(callback);
-  observer.observe(item, options);
+  observer.observe(liElement, options);
 });
