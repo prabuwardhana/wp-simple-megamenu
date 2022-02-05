@@ -129,7 +129,7 @@ class Menu_Fields
 
     public function nav_menu_walker_edit($walker)
     {
-        require_once SMM_PATH . '/inc/walkers/Walker_Nav_Megamenu_Edit.php';
+        require_once WP_SIMPLE_MEGAMENU_PATH . '/inc/walkers/Walker_Nav_Megamenu_Edit.php';
 
         $walker = 'Walker_Nav_Megamenu_Edit';
 
