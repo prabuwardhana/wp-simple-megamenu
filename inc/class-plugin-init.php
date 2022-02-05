@@ -30,16 +30,17 @@ class Simple_Megamenu_Init
     }
 
     /**
-     * Enqueue plugin's scripts forn nav-menu.php
+     * Enqueue plugin's scripts for nav-menu.php
      *
      * @since  0.1.0
      */
     public function enqueue_navmenu_scripts($hook)
     {
+        // Only enqueue script in nav menu administration page
         if ('nav-menus.php' != $hook) {
             return;
         }
-        wp_enqueue_script('simple-megamenu-admin-script', SMM_URL . 'dist/js/megamenu-admin.min.js', [], false, true);
+        wp_enqueue_script('simple-megamenu-admin-script', SMM_URL . 'dist/js/megamenu-admin.min.js', array('jquery'), false, true);
     }
 
     /**
