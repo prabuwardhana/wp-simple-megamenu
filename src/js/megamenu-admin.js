@@ -1,5 +1,5 @@
 (function ($) {
-  const fnName = function () {
+  const observeMenuItems = function () {
     // find all activate megamenu input fields
     $(".field-mm-megamenu input").each(function () {
       const self = $(this);
@@ -34,14 +34,15 @@
     });
   };
 
-  // Run the function
-  fnName();
+  // Run the function.
+  // Observe the current menu items.
+  observeMenuItems();
 
   // Run the function again when new menu item is added to the menu list
   // 'menu-item-added' event is a wordpress custom event!
   // it is triggered when new menu item is added to the list.
   // see: wp-admin/js/nav-menu.js
   $(document).on("menu-item-added", function () {
-    fnName();
+    observeMenuItems();
   });
 })(jQuery);
