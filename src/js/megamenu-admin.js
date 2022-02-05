@@ -20,6 +20,7 @@
               self.prop("disabled", false);
             } else {
               self.prop("disabled", true);
+              self.prop("checked", false);
             }
           }
         });
