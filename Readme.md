@@ -83,7 +83,7 @@ Megamenu location setting:
 
 Custom fields added under Appearance -> Menus to control the appearance of your megamenu:
 
-![Custom fields added under Appearance -> Menus](/screenshots/screenshots-5.png?raw=true)
+![Custom fields added under Appearance -> Menus](/screenshots/screenshot-5.png?raw=true)
 
 Megamenu option will be disabled once the menu item is moved under another menu item:
 
