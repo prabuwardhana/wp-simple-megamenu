@@ -66,8 +66,8 @@ class Walker_Nav_Megamenu extends Walker_Nav_menu
             $item_output .= '<h4 class="title">' . apply_filters('the_title', $item->title, $item->ID) . '</h4>';
             $item_output .= '</a>';
         } else {
-            if ((in_array("menu-item-has-children", $item->classes) || !empty($item->post_content)) && ($depth > 0)) {
-                $item_output .= '<h4 class="title">' . apply_filters('the_title', $item->title, $item->ID) . '</h4>';
+            if ((in_array("menu-item-has-children", $item->classes) || !empty($item->description)) && ($depth > 0)) {
+                $item_output .= '<h4 class="title something">' . apply_filters('the_title', $item->title, $item->ID) . '</h4>';
             } else {
                 $item_output .= '<a' . $attributes . '>';
                 $item_output .= $args->link_before; // Text before the link text
@@ -79,8 +79,8 @@ class Walker_Nav_Megamenu extends Walker_Nav_menu
 
         $item_output .= $args->after; // Text after the link markup	
 
-        if ($depth == 1 && (!empty($item->post_content) && (strlen($item->post_content) > 1))) {
-            $item_output .= '<p class="menu-item-desc">' . $item->post_content . '</p>';
+        if ($depth == 1 && (!empty($item->description) && (strlen($item->description) > 1))) {
+            $item_output .= '<p class="menu-item-desc">' . $item->description . '</p>';
         }
 
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
